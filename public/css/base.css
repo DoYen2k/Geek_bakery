@@ -239,6 +239,57 @@ body {
   box-shadow: 0 0 1px 4px var(--color-active);
   transition: all 0.1s ease-out;
 }
+/* Toast message */
+
+#toast {
+  visibility: hidden;
+  max-width: 50px;
+  height: 50px;
+  margin-left: -125px;
+  margin: auto;
+  background-color: rgb(255, 221, 221);
+  box-shadow: 5px 5px 10px rgba(66, 66, 66, 0.349);
+  color: var(--color-title);
+  text-align: center;
+  border-radius: 8px;
+
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  font-size: 17px;
+  white-space: nowrap;
+}
+#toast #img {
+  width: 50px;
+  height: 50px;
+
+  float: left;
+
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+
+  box-sizing: border-box;
+
+  background-color: rgb(255, 157, 157);
+}
+#toast #desc {
+  padding: 16px;
+  /* overflow: hidden; */
+  white-space: nowrap;
+}
+
+#toast.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 2s,
+    fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 4s,
+    fadeout 0.5s 4.5s;
+}
+
 @media only screen and (max-width: 768px) {
   .title {
     font-size: 2.5rem;

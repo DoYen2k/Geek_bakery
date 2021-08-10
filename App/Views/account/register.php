@@ -67,7 +67,6 @@
           } else {
             emailMessage.innerText = "";
           }
-
         }
       };
       xhttp.open("GET", "<?= DOCUMENT_ROOT ?>/account/checkValidEmail?email=" + emailInput.value, true);
