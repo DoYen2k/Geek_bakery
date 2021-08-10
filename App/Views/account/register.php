@@ -8,6 +8,11 @@
           </div>
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
+            <?php if (isset($data['error'])) : ?>
+              <?php foreach ($data['error'] as $index => $error) : ?>
+                <p style="color: red"><?= $error ?></p>
+              <?php endforeach; ?>
+            <?php endif; ?>
             <form action="<?= DOCUMENT_ROOT ?>/account/signup" method="POST">
 
               <div class="form-floating mb-3">
@@ -49,8 +54,7 @@
   <script>
     function checkValidEmail() {
       var emailInput = document.getElementById('email');
-      var emailMessage = document.getElementById('emailMessage')
-
+      var emailMessage = document.getElementById('emailMessage');
       const xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {

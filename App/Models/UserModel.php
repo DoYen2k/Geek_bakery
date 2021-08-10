@@ -13,9 +13,7 @@
             $result = $stmt->get_result();
             if ($result->num_rows > 0) {
               $passwordHashed = $result->fetch_assoc()['password'];
-        
               $isValidPassword = password_verify($pw, $passwordHashed);
-        
               if ($isValidPassword == true) {
                 return true;
               } else {
@@ -55,6 +53,17 @@
             } else {
             return false;
             }
+        }
+        function checkValidEmail($email){
+          $stmt = $this->db->prepare("SELECT * FROM USERS WHERE Email = ?");
+          $stmt->bind_param("s", $email);
+          $stmt->execute();
+          $result = $stmt->get_result();
+          if ($result->num_rows > 0) {
+            return false;
+          } else {
+            return true;
+          }
         }
     }
 ?>

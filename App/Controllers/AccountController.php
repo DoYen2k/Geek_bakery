@@ -48,5 +48,18 @@
             header("Location: " . DOCUMENT_ROOT);
             return;
         }
+        function checkvalidemail(){
+            if (isset($_GET['email'])) {
+                $result =  $this->usermodel->checkValidEmail($_GET['email']);
+                if ($result == true) {
+                  echo "true";
+                  return;
+                } else {
+                  echo "false";
+                  return;
+                }
+              }
+            echo "false";
+        }
     }
 ?>

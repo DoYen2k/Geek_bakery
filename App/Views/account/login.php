@@ -8,6 +8,11 @@
           </div>
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Login</h5>
+            <?php if (isset($data['error'])) : ?>
+              <?php foreach ($data['error'] as $index => $error) : ?>
+                <p style="color: red"><?= $error ?></p>
+              <?php endforeach; ?>
+            <?php endif; ?>
             <?php if (isset($data['message'])) : ?>
               <?php foreach ($data['message'] as $index => $message) : ?>
                 <p style="color: green"><?= $message ?></p>
