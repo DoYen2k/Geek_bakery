@@ -25,54 +25,50 @@ class CartModel extends Database{
     }
 
     function addToCart($data){
-        // $data['userId'];
-        // $data['cakeId'];
-        // echo $data['userId'];
-        // die();
-    if (!isset($data['userId']) || !isset($data['cakeId'])) {
-        // var_dump($data) ;
-        // die();
-    return [
-        'isSuccess' => false,
-        'numInCart' => 0,
-        'error' => "Empty user id or cake id"
-    ];
-    }
-
-    $cakeId = $data['cakeId'];
-    $userId = $data['userId'];
-    $amount = 1;
-
-    $amountInCart = $this->checkCakeInCart($userId, $cakeId);
-    $isSuccess = true;
-    $error = "";
-
-    if ($amountInCart > 0) {
-    $amount += $amountInCart;
-    $stmt = $this->db->prepare("UPDATE CART SET amount = ? WHERE id_user = ? AND id_cake = ?");
-    $stmt->bind_param("iii", $amount, $userId, $cakeId);
-
-    $stmt->execute();
-    if ($stmt->error) {
-        $isSuccess = false;
-        $error = $stmt->error;
-    }
-    } else {
-        $stmt = $this->db->prepare("INSERT INTO CART(id_cake, id_user, amount) VALUES (?, ?, ?)");
-        $stmt->bind_param("iii", $cakeId, $userId, $amount);
-
+            // $data['userId'];
+            // $data['cakeId'];
+            // echo $data['userId'];
+            // die();
+        if (!isset($data['userId']) || !isset($data['cakeId'])) {
+            // var_dump($data) ;
+            // die();
+        return [
+            'isSuccess' => false,
+            'numInCart' => 0,
+            'error' => "Empty user id or cake id"
+        ];
+        }
+        $cakeId = $data['cakeId'];
+        $userId = $data['userId'];
+        $amount = 1;
+        $amountInCart = $this->checkCakeInCart($userId, $cakeId);
+        $isSuccess = true;
+        $error = "";
+        
+        if ($amountInCart > 0) {
+        $amount += $amountInCart;
+        $stmt = $this->db->prepare("UPDATE CART SET amount = ? WHERE id_user = ? AND id_cake = ?");
+        $stmt->bind_param("iii", $amount, $userId, $cakeId);
         $stmt->execute();
         if ($stmt->error) {
             $isSuccess = false;
             $error = $stmt->error;
         }
-    }
+        } else {
+            $stmt = $this->db->prepare("INSERT INTO CART(id_cake, id_user, amount) VALUES (?, ?, ?)");
+            $stmt->bind_param("iii", $cakeId, $userId, $amount);
 
-    $numInCart = $this->amountInCart($userId);
-    return [
-    'isSuccess' => $isSuccess,
-    'numInCart' => $numInCart,
-    'error' => $error];
+            $stmt->execute();
+            if ($stmt->error) {
+                $isSuccess = false;
+                $error = $stmt->error;
+            }
+        }
+        $numInCart = $this->amountInCart($userId);
+        return [
+        'isSuccess' => $isSuccess,
+        'numInCart' => $numInCart,
+        'error' => $error];
     }
 
     function deleteInCart($userId, $cakeId){
@@ -88,3 +84,4 @@ class CartModel extends Database{
     }
     }
 ?>
+

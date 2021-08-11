@@ -8,8 +8,8 @@ class CartController extends Controller {
             $this->cartModel = $this->model('CartModel');
         }
         function addToCart(){
-            if (isset($_POST)) {
-            $result = $this->cartModel->addToCart($_POST);
+            if (isset($_GET)) {
+            $result = $this->cartModel->addToCart($_GET);
             echo json_encode($result);
             return;
             }

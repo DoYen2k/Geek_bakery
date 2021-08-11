@@ -12,7 +12,7 @@
             <div class="sweeties__item__price"><?= number_format($cake['price'], 0, '', ',') ?>đ</div>
             <div class="sweeties__item__original__price">300.000đ</div>
           </div>
-          <button class="btn btn__secondary">Add to cart +</button>
+          <button onClick="addToCart(<?= isset($_SESSION['user']) ? $_SESSION['user']['id'] : 0 ?>, <?= $cake['id'] ?>)" class="btn btn__secondary">Add to cart +</button>
         </div>
       <?php endforeach ?>
     </div>

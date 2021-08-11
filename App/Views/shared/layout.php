@@ -35,12 +35,6 @@
 
   <?php else : ?>
   <body>
-    <div id="toast">
-        <div id="img">Icon</div>
-        <div id="desc">A notification message..</div>
-    </div>
-
-    <p hidden id="documentRootId"><?= DOCUMENT_ROOT ?></p>
 
     <?php require_once(VIEW . '/shared/header.php') ?>
 
@@ -48,6 +42,13 @@
 
     <?php require_once(VIEW . '/shared/footer.php') ?>
     
+    <p hidden id="documentRootId"><?= DOCUMENT_ROOT ?></p>
+
+    <div id="toast">
+        <div id="img">Icon</div>
+        <div id="desc">A notification message..</div>
+    </div>
+
     <script src="<?= PUBLIC_URL ?>/js/showslide.js"></script>
     <script src="<?= PUBLIC_URL ?>/js/cart.js"></script>
   </body>
