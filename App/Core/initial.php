@@ -10,7 +10,8 @@
     defined('VIEW') ?: define('VIEW', APP.DS.'Views');
     defined('CONFIGS') ?: define('CONFIGS', APP.DS.'Configs');
     defined('PUBLIC') ?: define('PUBLIC', APP.DS.'public');
-
+    defined('PUBLIC_DIR') ?:  define('PUBLIC_DIR', ROOT . DS . 'public');
+    defined('PUBLIC_DIR_CAKE_IMAGES') ?:  define('PUBLIC_DIR_CAKE_IMAGES', ROOT . DS . 'public' . DS . 'img' . DS . 'cakes');
 
     require_once(CORE . DS . "App.php");
     require_once(CORE . DS . "Controller.php");

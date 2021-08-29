@@ -22,6 +22,13 @@
           <div class="col-12">
             <div class="card">
               <!-- /.card-header -->
+                <div class="card-header">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5>Cake list</h5>
+                    <a class="btn btn-primary" href="<?=DOCUMENT_ROOT?>/admin/cakes/create">Create</a>
+                  </div>
+                </div>
+
               <div class="card-body">
                 <table id="Mytable" class="table table-bordered table-hover">
                   <thead>
@@ -44,7 +51,7 @@
                             <td><img style="max-width: 100px;" class="rounded img-thumbnail" src="<?= IMAGES_CAKES_URL ?>/<?= $cake['image']?>" alt="image cake"/></td>
                             <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-info">Edit</button>
+                                <a href="<?=DOCUMENT_ROOT?>/admin/cakes/edit/<?=$cake['id']?>"><button type="button" class="btn btn-info">Edit</button></a>
                                 <button type="button" class="btn btn-danger">Delete</button>
                             </div>
                             </td>

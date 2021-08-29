@@ -1,7 +1,7 @@
   <!-- Main Sidebar Container -->
   <aside class="position-fixed main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?= DOCUMENT_ROOT. "/admin"?>" class="brand-link">
+    <a href="<?= DOCUMENT_ROOT?>" class="brand-link">
       <img src="<?= ICONS_URL ?>/favio.png " alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Geek's</span>
     </a>
@@ -14,7 +14,7 @@
           <img src="<?= PUBLIC_URL. "/admin"?>/dist/img/avtyen.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="https://www.facebook.com/profile.php?id=100011096178254" class="d-block">Đỗ Xuân Yên</a>
+          <a href="https://www.facebook.com/doyen333" class="d-block">Đỗ Xuân Yên</a>
         </div>
       </div>
 

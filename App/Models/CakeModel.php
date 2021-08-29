@@ -25,8 +25,7 @@ class CakeModel extends Database{
             }
         }
 
-        function getByKeyword($keyword)
-        {
+        function getByKeyword($keyword){
             $keyword = '%' . $keyword . '%';
             $stmt = $this->db->prepare("SELECT * FROM CAKES WHERE name like ?");
             $stmt->bind_param("s", $keyword);
@@ -38,6 +37,46 @@ class CakeModel extends Database{
             return $result->fetch_all(MYSQLI_ASSOC);
             } else {
             return false;
+            }
+        }
+        function store($data){
+            $name = $data['name'];
+            $categoryId = $data['categoryId'];
+            $size = $data['size'];
+            $price = $data['price'];
+            $description = $data['description'];
+            $imageName = $data['image'];
+
+            $stmt = $this->db->prepare("INSERT INTO CAKES(name, id_cake_type, price, size, description, image) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("siiiss", $name, $categoryId, $size, $price, $description, $imageName);
+
+            $stmt->execute();
+            $result = $stmt->affected_rows;
+
+            if ($result < 1) {
+            return false;
+            } else {
+            return true;
+            }
+        }
+        function update($data){
+            $name = $data['name'];
+            $categoryId = $data['categoryId'];
+            $size = $data['size'];
+            $price = $data['price'];
+            $description = $data['description'];
+            $imageName = $data['image'];
+            $id = $data['id'];
+            $stmt = $this->db->prepare("UPDATE CAKES set name = ?, id_cake_type = ?, size = ?, price = ?, description = ?, image = ? WHERE id = ?");
+            $stmt->bind_param("siiissi", $name, $categoryId, $size, $price, $description, $imageName, $id);
+        
+            $stmt->execute();
+            $result = $stmt->affected_rows;
+        
+            if ($result < 1) {
+            return false;
+            } else {
+            return true;
             }
         }
     }
