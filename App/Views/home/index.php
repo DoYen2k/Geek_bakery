@@ -2,7 +2,6 @@
 <div class="banner">
   <img src="<?= IMAGES_URL ?>/banner.png" alt="banner">
 </div>
-<?php echo ROOT?>
 <!-- category -->
 <div class="wrapper">
   <section class="container category noselect">

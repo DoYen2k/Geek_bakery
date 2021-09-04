@@ -106,5 +106,21 @@
                 }
             }
         }
+
+        function delete($id){
+            $cakedelete = $this->cakemodel->getById($id);
+            if(!$cakedelete){
+                header("Location: " . DOCUMENT_ROOT . "/admin");
+            } else {
+                $result = $this->cakemodel->delete($id);
+                if ($result) {
+                    header("Location: " . DOCUMENT_ROOT . "/admin/cakes");
+                } else {
+                    if (isset($_SERVER["HTTP_REFERER"])) {
+                        header("Location: " . $_SERVER["HTTP_REFERER"]);
+                    }
+                }
+            }
+        }
     }
 ?>
